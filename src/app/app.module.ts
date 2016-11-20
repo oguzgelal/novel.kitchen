@@ -10,9 +10,9 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AuthMethods, AuthProviders, AngularFireModule } from 'angularfire2';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashmenuComponent } from './dashboard/shared/dashmenu/dashmenu.component';
-import { DashcrumbComponent } from './dashboard/shared/dashcrumb/dashcrumb.component';
 import { HomeComponent } from './home/home.component';
+import { BookListComponent } from './shared/book-list/book-list.component';
+import { BookItemComponent } from './shared/book-item/book-item.component';
 
 const firebaseConfig = environment.firebaseConfig;
 const firebaseAuthConfig = {
@@ -26,9 +26,9 @@ const firebaseAuthConfig = {
   declarations: [
     AppComponent,
     DashboardComponent,
-    DashmenuComponent,
-    DashcrumbComponent,
-    HomeComponent
+    HomeComponent,
+    BookListComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule,

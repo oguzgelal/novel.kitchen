@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { DashcrumbComponent } from './dashcrumb.component';
+import { BookListComponent } from './book-list.component';
 
-describe('Component: Dashcrumb', () => {
+describe('Component: BookList', () => {
   it('should create an instance', () => {
-    let component = new DashcrumbComponent();
+    let component = new BookListComponent();
     expect(component).toBeTruthy();
   });
 });

@@ -1,0 +1,29 @@
+.book-list {
+  width: 100%;
+  margin-bottom: 20px;
+
+  .title {
+    background-color: black;
+    color: white;
+    padding: 5px 15px;
+  }
+
+  .book-list-container {
+    padding: 0 !important;
+    overflow-y: hidden !important;
+    overflow-x: scroll !important;
+
+    .book-list-scroll {
+      width: auto !important;
+      white-space: nowrap !important;
+      overflow-y: scroll !important;
+      -webkit-overflow-scrolling: touch;
+
+      .book-container {
+        width: 180px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+  }
+}
