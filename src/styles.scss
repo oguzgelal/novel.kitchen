@@ -13,3 +13,9 @@ html, body, * {
 	-o-user-select: none !important;
 	-ms-user-select: none !important;
 }
+
+@media (max-width: 767px) {
+  .main-container {
+    padding: 0 !important;
+  }
+}

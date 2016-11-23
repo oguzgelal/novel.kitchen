@@ -1,11 +1,23 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent }  from './home/home.component';
-import { DashboardComponent }  from './dashboard';
+import { DashboardComponent }  from './dashboard/dashboard.component';
+import { NovelComponent }  from './novel/novel.component';
+
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'me', component: DashboardComponent },
+  {
+    path: 'novel',
+    children: [
+      { path: '', redirectTo: 'new' },
+      { path: 'new', component: NovelComponent, data: {action: 'new'} },
+      { path: ':id', component: NovelComponent, data: {action: 'view'} },
+      { path: ':id/edit', component: NovelComponent, data: {action: 'edit'} }
+    ]
+  }
 ];
 
 export const appRoutingProviders: any[] = [

@@ -6,12 +6,20 @@
     background-color: black;
     color: white;
     padding: 5px 15px;
+    @media (max-width: 767px) {
+      text-align: center;
+    }
   }
 
   .book-list-container {
     padding: 0 !important;
     overflow-y: hidden !important;
     overflow-x: scroll !important;
+    border: 5px solid black;
+    border-top: none;
+    @media (max-width: 767px) {
+      border: none !important;
+    }
 
     .book-list-scroll {
       width: auto !important;
@@ -23,6 +31,14 @@
         width: 180px;
         display: inline-block;
         margin-right: 10px;
+      }
+      .book-container:first-of-type {
+        margin-left: 10px;
+      }
+    }
+    @media (max-width: 767px) {
+      .book-list-scroll {
+        padding: 0 5px !important;
       }
     }
   }

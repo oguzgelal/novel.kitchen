@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { BookListComponent } from './shared/book-list/book-list.component';
 import { BookItemComponent } from './shared/book-item/book-item.component';
+import { NovelComponent } from './novel/novel.component';
 
 const firebaseConfig = environment.firebaseConfig;
 const firebaseAuthConfig = {
@@ -28,7 +29,8 @@ const firebaseAuthConfig = {
     DashboardComponent,
     HomeComponent,
     BookListComponent,
-    BookItemComponent
+    BookItemComponent,
+    NovelComponent
   ],
   imports: [
     BrowserModule,
