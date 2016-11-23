@@ -1,4 +1,3 @@
 {
-    "typescript.check.workspaceVersion": false,
-    "workbench.editor.showTabs": false,
+    "typescript.check.workspaceVersion": false
 }

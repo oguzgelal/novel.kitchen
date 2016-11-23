@@ -1,6 +1,23 @@
-<div class="col-sm-6 col-xs-12">
-
-</div>
-<div class="col-sm-6 col-xs-12">
-
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Book Title</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+  <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+    <div class="book-preview-container">
+      <div class="book-preview-title">Preview</div>
+      <div class="book-preview">
+        <book-item [book]="book"></book-item>
+      </div>
+    </div>
+  </div>
 </div>

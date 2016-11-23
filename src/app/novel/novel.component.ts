@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'app-novel',
@@ -11,14 +12,21 @@ export class NovelComponent implements OnInit {
   private _sub: any;
   private _action: string;
   private _id: number;
+  public book: Book;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this._sub = this.route.data.subscribe(data => {
-      console.log(data['action']);
       if (data['action']){ this._action = data['action']; }
+      this.prepareObject();
     });
+  }
+
+  prepareObject(){
+    if (this._action==='new'){
+      this.book = new Book();
+    }
   }
 
   ngOnDestroy() {
