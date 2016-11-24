@@ -16,3 +16,26 @@ html, body, * {
 
 a { color: white !important; }
 a:hover { text-decoration: none !important; }
+
+input[type='text'] {
+    border: none;
+    box-shadow: none !important;
+    border-bottom: 3px solid black !important;
+    border-radius: 0 !important;
+    padding: 0;
+}
+
+.input-group-addon {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 3px solid black !important;
+}
+
+button {
+  border-radius: 0 !important;
+  border: none !important;
+  color: white !important;
+  background-color: black !important;
+  outline: none !important;
+}

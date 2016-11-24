@@ -1,6 +1,32 @@
 .row {
   margin-top: 40px;
 }
+
+.submit {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+form {
+  font-weight: lighter !important;
+  label { font-weight: bolder !important; }
+}
+
+.author-label {
+  width: 100%;
+  position: relative;
+  .author-rb { position: absolute; }
+  .author-txt {
+    padding-left: 30px;
+    border: none !important;
+    font-size: 18px;
+  }
+}
+
+input[type="radio"] {
+  margin-right: 10px !important;
+}
+
 .book-preview-container {
   text-align: center;
   background-color: rgb(249,250,251);

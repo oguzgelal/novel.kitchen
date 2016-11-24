@@ -5,7 +5,7 @@ export class BookList {
   books: Book[];
 
   constructor(options?: any) {
-    this.title = options.title ? options.title : '';
-    this.books =  options.books ? options.books : [];
+    this.title = (options && options.title) ? options.title : '';
+    this.books =  (options && options.books) ? options.books : [];
   }
 }
