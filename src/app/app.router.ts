@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent }  from './home/home.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
 import { NovelComponent }  from './novel/novel.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'me', component: DashboardComponent },
+  { path: 'settings', component: SettingsComponent },
   {
     path: 'novel',
     children: [

@@ -7,7 +7,7 @@
         <input name="bookTitle" [(ngModel)]="book.title" type="text" class="form-control" id="bookTitle" maxlength="120" placeholder="Enter a title">
       </div>
       <!-- author -->
-      <div class="form-group">
+      <div class="form-group mtop">
         <label for="bookTitle">Author</label>
         <div>
           <label>
@@ -31,16 +31,24 @@
           </label>
         </div>
       </div>
+      <!-- description -->
+      <div class="form-group mtop">
+        <label for="bookDescription">Description</label>
+        <textarea name="bookDescription" rows="4" [(ngModel)]="book.description" type="text" class="form-control" id="bookTitle" placeholder="Enter what would normally be on the back side of your novel"></textarea>
+      </div>
+      <!-- color -->
     </form>
   </div>
+
   <div class="col-sm-offset-3 col-sm-6 col-xs-12">
-    <div class="book-preview-container">
+    <div class="book-preview-container mtop">
       <div class="book-preview-title">Preview</div>
       <div class="book-preview">
         <book-item [book]="book"></book-item>
       </div>
     </div>
   </div>
+
   <div class="col-sm-offset-3 col-sm-6 col-xs-12">
     <button type="button" class="btn btn-default submit pull-right">Submit</button>
   </div>

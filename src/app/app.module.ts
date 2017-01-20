@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { BookListComponent } from './shared/book-list/book-list.component';
 import { BookItemComponent } from './shared/book-item/book-item.component';
 import { NovelComponent } from './novel/novel.component';
+import { HeaderComponent } from './header/header.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const firebaseConfig = environment.firebaseConfig;
 const firebaseAuthConfig = {
@@ -30,7 +32,9 @@ const firebaseAuthConfig = {
     HomeComponent,
     BookListComponent,
     BookItemComponent,
-    NovelComponent
+    NovelComponent,
+    HeaderComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

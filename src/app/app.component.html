@@ -1,16 +1,5 @@
-<div class="header">
-  <div *ngIf="_auth.isLoggedIn()" class="animated slideInDown avatar clickable" (mouseenter)="logoHover=true" (mouseleave)="logoHover=false" (click)="_auth.logout()">
-    <div class="logout-layer" [ngClass]="{'active': logoHover===true}"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-    <img [src]="_auth.user.photoURL" [alt]="_auth.user.displayName">
-  </div>
-  <div class="logo animated fadeInUp">novel.kitchen</div>
-  <div *ngIf="!_auth.isLoggedIn()" class="text animated fadeIn">
-    <div (click)="_auth.login()" class="button facebook">
-      <i class="fa fa-facebook-square" aria-hidden="true"></i>
-      facebook login
-    </div>
-  </div>
-</div>
+<app-header></app-header>
+
 <div class="page-contents animated fadeIn">
   <div class="container main-container">
     <router-outlet></router-outlet>

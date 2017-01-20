@@ -14,7 +14,8 @@ html, body, * {
 	-ms-user-select: none !important;
 }
 
-a { color: white !important; }
+a { color: white; }
+a.white { color: white; }
 a:hover { text-decoration: none !important; }
 
 input[type='text'] {
@@ -22,7 +23,16 @@ input[type='text'] {
     box-shadow: none !important;
     border-bottom: 3px solid black !important;
     border-radius: 0 !important;
-    padding: 0;
+    border-left: 3px solid black !important;
+}
+
+textarea {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-bottom: 3px solid black !important;
+  border-left: 3px solid black !important;
 }
 
 .input-group-addon {
