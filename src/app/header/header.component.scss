@@ -26,6 +26,12 @@
     -moz-animation-duration: .2s;
     -o-animation-duration: .2s;
     -ms-animation-duration: .2s;
+    border-radius: 0 !important;
+    border: 5px solid black !important;
+    li.divider {
+      height: 3px !important;
+      background-color: whitesmoke !important;
+    }
   }
   .dropdown-menu>li>a {
     color: black;
