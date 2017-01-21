@@ -8,7 +8,9 @@
   position: relative;
   .settings {
     position: absolute;
-    top: 0;
+    top: 40px;
+    @media (max-width: 991px) { top: 30px; }
+    @media (max-width: 767px) { top: 13px; }
     left: 0;
     font-size: 25px;
     line-height: 10px;
@@ -16,7 +18,9 @@
   }
   .settings:hover { cursor: pointer; }
   .dropdown-menu {
-    top: 30px !important;
+    top: 70px !important;
+    @media (max-width: 991px) { top: 60px !important; }
+    @media (max-width: 767px) { top: 43px !important; }
     animation-duration: .2s;
     -webkit-animation-duration: .2s;
     -moz-animation-duration: .2s;
@@ -37,8 +41,10 @@
 	width: 100%;
 	text-align: center;
 }
-.logo {
+.logo, .logo a, .logo, a .blinker {
+  text-decoration: none !important;
 	font-size: 42px;
+  color: black;
   @media (max-width: 991px) { font-size: 32px; }
   @media (max-width: 767px) { font-size: 28px; }
 	animation-duration: 1.5s;
@@ -96,4 +102,18 @@
 .facebook {
   font-size: 20px;
   color: #3b5998 !important;
+}
+
+.blinker {
+  position: absolute;
+  -webkit-animation: 1s blinker step-end infinite !important;
+  -moz-animation: 1s blinker step-end infinite !important;
+  -ms-animation: 1s blinker step-end infinite !important;
+  -o-animation: 1s blinker step-end infinite !important;
+  animation: 1s blinker step-end infinite !important;
+}
+@keyframes blinker {
+  from { opacity: 1.0; }
+  50% { opacity: 0; }
+  to { opacity: 1.0; }
 }

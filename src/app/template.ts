@@ -3,20 +3,15 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class TemplateComponent implements OnInit, OnDestroy {
 
-  private settings;
   private _sub: any;
 
-  constructor(private route: ActivatedRoute, public ds: DataService) {
-    this.settings = {
-      username: ''
-    }
-  }
+  constructor(private route: ActivatedRoute, public ds: DataService) { }
 
   ngOnInit() {
     this._sub = this.route.data.subscribe(data => {

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BookList } from '../models/bookList';
 import { Book } from '../models/book';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../services/data';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   myBooks: BookList;
   booksRead: BookList;
@@ -15,7 +17,9 @@ export class DashboardComponent implements OnInit {
   booksFavorited: BookList;
   booksSaved: BookList;
 
-  constructor() {
+  private _sub: any;
+
+  constructor(private route: ActivatedRoute, public ds: DataService) {
 
     let b1 = new Book({ title: 'Franny and Zoey', author: 'J.D. Salinger', color: 'wet_asphalt' });
     let b2 = new Book({ title: '1984', author: 'George Orwel', color: 'asbestos' });
@@ -55,6 +59,13 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._sub = this.route.data.subscribe(data => {
+      this.ds.routerData.next(data);
+    });
+  }
+
+  ngOnDestroy() {
+    this._sub.unsubscribe();
   }
 
 }

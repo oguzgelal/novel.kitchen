@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { appRoutingProviders, routing } from './app.router';
 
 import { AuthService } from './services/auth/';
+import { DataService } from './services/data/';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -46,8 +47,15 @@ const firebaseAuthConfig = {
   ],
   providers: [
     appRoutingProviders,
-    AuthService
+    AuthService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+
+  }
+
+}

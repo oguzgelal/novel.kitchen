@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "mscapp-6aa49",
-    "museo": "mscapp-6aa49"
+    "museo": "mscapp-6aa49",
+    "novel-kitchen": "novel-kitchen"
   }
 }
