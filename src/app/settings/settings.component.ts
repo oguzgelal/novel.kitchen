@@ -4,7 +4,8 @@ import { DataService } from '../services/data';
 import { ApiService } from '../services/api';
 import { AuthService } from '../services/auth';
 import { AccountService } from '../services/account';
-import swal from 'sweetalert2'
+
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-settings',
@@ -25,10 +26,11 @@ export class SettingsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    let self = this;
     console.log('settings initialised');
-    console.log(this.account);
-    this._sub = this.route.data.subscribe(data => {
-      this.ds.routerData.next(data);
+    console.log(self.account);
+    self._sub = self.route.data.subscribe(data => {
+      self.ds.routerData.next(data);
     });
   }
 
