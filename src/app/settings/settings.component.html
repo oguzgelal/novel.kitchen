@@ -4,15 +4,17 @@
       <!-- username -->
       <div class="form-group">
         <label for="accountUsername">Username</label>
-        <input name="accountUsername" [(ngModel)]="settings.username" type="text" class="form-control" id="bookTitle" maxlength="120" placeholder="enter a username">
+        <input name="accountUsername" [(ngModel)]="account.username" type="text" class="form-control" id="bookTitle" maxlength="120" placeholder="enter a username">
         <span class="help-block">If you do not wish to use your real name in your novels, you can claim a username for your account and publish your novels under it.</span>
       </div>
       <!-- description -->
       <div class="form-group mtop">
         <label for="accountBio">Bio</label>
-        <textarea name="accountBio" rows="3" [(ngModel)]="settings.bio" type="text" class="form-control" id="bookTitle" placeholder="describe yourself"></textarea>
+        <textarea name="accountBio" rows="3" [(ngModel)]="account.bio" type="text" class="form-control" id="bookTitle" placeholder="describe yourself"></textarea>
       </div>
-
     </form>
+  </div>
+  <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+    <button type="button" class="btn btn-default submit pull-right" (click)="submit()">Submit</button>
   </div>
 </div>

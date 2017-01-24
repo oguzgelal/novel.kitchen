@@ -11,4 +11,8 @@ export class DataService {
     this.routerData = new BehaviorSubject({});
   }
 
+  public clear() {
+    this.routerData = null;
+  }
+
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../services/data';
+import { DataService } from './services/data';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.scss']
 })
 export class TemplateComponent implements OnInit, OnDestroy {
 

@@ -1,5 +1,7 @@
+import { Injectable } from '@angular/core';
 import { ColorCodes } from '../enum/colorCodes';
 
+@Injectable()
 export class Book {
     title: string;
     author: string;
