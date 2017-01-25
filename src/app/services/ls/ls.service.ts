@@ -7,6 +7,7 @@ export class LsService {
   public prefix: string = 'nk_';
 
   constructor() {
+    console.log('ls service');
     if (!localStorage) { throw new Error('Current browser does not support Local Storage'); }
     this.localStorage = localStorage;
   }

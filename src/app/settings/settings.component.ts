@@ -14,8 +14,9 @@ import swal from 'sweetalert2';
 })
 export class SettingsComponent implements OnInit {
 
-  private settings;
+  private settings = {};
   private _sub: any;
+  private _data: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,19 +28,24 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     let self = this;
-    console.log('settings initialised');
-    console.log(self.account);
     self._sub = self.route.data.subscribe(data => {
       self.ds.routerData.next(data);
+    });
+    this.ds.loading.next({ on: true });
+    self._data = this.account.get().subscribe(data => {
+      this.settings['username'] = data.username;
+      this.settings['bio'] = data.bio;
+      this.ds.loading.next({ on: false });
     });
   }
 
   ngOnDestroy() {
     this._sub.unsubscribe();
+    this._data.unsubscribe();
   }
 
   submit() {
-    this.account.save().then(() => {
+    this.account.set(this.settings).then(() => {
       swal('Success!', 'Settings saved', 'success');
     }).catch(() => {
       swal('Upps!', 'An error occured', 'error');

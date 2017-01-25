@@ -50,3 +50,10 @@
     </div>
   </div>
 </div>
+
+<!-- Loading -->
+<div class="loading-container animated fadeIn" *ngIf="loading.on">
+  <div class="loading animated flipInX">
+    {{ loading.message || 'loading...' }}
+  </div>
+</div>

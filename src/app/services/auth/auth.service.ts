@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { FirebaseAuth, AngularFire } from 'angularfire2';
 import { ApiService } from '../api';
-import { AccountService } from '../account';
+//import { AccountService } from '../account';
 import { DataService } from '../data';
 import { LsService } from '../ls';
 
@@ -16,20 +16,29 @@ export class AuthService {
     private _auth: FirebaseAuth,
     private _api: ApiService,
     private _ds: DataService,
-    private _account: AccountService,
+    //private _account: AccountService,
     private _ls: LsService
   ) {
 
     let self = this;
     self.fetchLs();
     if (!self.auth || !self.user) {
-      self._auth.subscribe(auth => {
-        self.auth = auth;
-        if (self.auth && self.auth.facebook) {
-          self.user = self.auth.facebook;
-          self.storeLs();
+      console.log('Session not found in local storage.');
+      self.refresh();
+    }
+    else {
+      try {
+        let tokenExpire = self.auth.auth.stsTokenManager.expirationTime;
+        let dateNow = Date.now();
+        if (dateNow >= tokenExpire) {
+          console.log('Token has expired.');
+          self.refresh();
         }
-      });
+      }
+      catch (e) {
+        console.log('Token expiration cannot be checked.');
+        self.refresh();
+      }
     }
   }
 
@@ -54,16 +63,28 @@ export class AuthService {
 
   public login() {
     let self = this;
-    return self._auth.login().then(res => {
-      self.user = res.auth;
-      self.storeLs();
-      self._account.sync(self.user.uid);
+    return self._auth.login().then(_ => {
+      self.refresh();
+    });
+  }
+
+  public refresh() {
+    console.log('Refreshing...');
+    let self = this;
+    self._auth.subscribe(auth => {
+      self.auth = auth;
+      console.log(self.auth);
+      if (self.auth && self.auth.facebook) {
+        self.user = self.auth.facebook;
+        console.log(self.user);
+        //self._account.sync();
+        self.storeLs();
+      }
     });
   }
 
   public logout() {
     this.clear();
-    this._account.clear();
     this._ds.clear();
     this._auth.logout();
   }

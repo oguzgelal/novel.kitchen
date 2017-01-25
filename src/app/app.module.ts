@@ -93,7 +93,6 @@ const firebaseAuthConfig = {
 export class AppModule {
 
   constructor() {
-
   }
 
 }

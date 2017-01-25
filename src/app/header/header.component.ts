@@ -10,8 +10,12 @@ import { DataService } from '../services/data';
 export class HeaderComponent implements OnInit {
 
   private blink: boolean = false;
+  private loading: boolean = false;
 
-  constructor(private _auth: AuthService, public ds: DataService) {
+  constructor(
+    private _auth: AuthService,
+    private _ds: DataService
+  ) {
 
   }
 
@@ -20,8 +24,12 @@ export class HeaderComponent implements OnInit {
   logout(): void { this._auth.logout(); }
 
   ngOnInit() {
-    this.ds.routerData.subscribe(data => {
+    this._ds.routerData.subscribe(data => {
       this.blink = data.blink;
+    });
+
+    this._ds.loading.subscribe(loading => {
+      this.loading = loading;
     });
   }
 
