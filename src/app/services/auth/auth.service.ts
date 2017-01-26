@@ -4,12 +4,14 @@ import { ApiService } from '../api';
 //import { AccountService } from '../account';
 import { DataService } from '../data';
 import { LsService } from '../ls';
+import { UtilsService } from '../utils';
 
 @Injectable()
 export class AuthService {
 
   public user;
   public auth;
+  public userimage;
 
   constructor(
     private _af: AngularFire,
@@ -17,7 +19,8 @@ export class AuthService {
     private _api: ApiService,
     private _ds: DataService,
     //private _account: AccountService,
-    private _ls: LsService
+    private _ls: LsService,
+    private _utils: UtilsService
   ) {
     let self = this;
     self.fetchLs();
@@ -41,6 +44,14 @@ export class AuthService {
       this.auth = data.auth;
       this.user = data.user;
     }
+    this.userimage = this._ls.get('auth_userimage');
+    if (this.userimage) {
+      this._ds.avatar.next({
+        image: this.userimage,
+        loading: false,
+        base64: true
+      });
+    }
   }
 
   public login() {
@@ -58,10 +69,18 @@ export class AuthService {
       console.log(self.auth);
       if (self.auth && self.auth.facebook) {
         self.user = self.auth.facebook;
-        self._ds.avatar.next({
-          image: self.user.photoURL,
-          loading: false
-        });
+        // store profile image in base64 if doesn't exist
+        if (!self.userimage) {
+          self._utils.imgToBase64(self.user.photoURL, function (base64) {
+            self.userimage = base64;
+            self._ls.set('auth_userimage', self.userimage);
+            self._ds.avatar.next({
+              image: self.userimage,
+              loading: false,
+              base64: true
+            });
+          }, 'image/png');
+        }
         self.storeLs();
       }
     });

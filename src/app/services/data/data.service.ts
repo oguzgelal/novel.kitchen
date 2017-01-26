@@ -18,7 +18,8 @@ export class DataService {
     });
     this.avatar = new BehaviorSubject({
       image: '',
-      loading: true
+      loading: true,
+      base64: false
     });
   }
 

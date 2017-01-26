@@ -38,7 +38,7 @@
   <div *ngIf="_auth.isLoggedIn()" class="animated slideInDown avatar clickable" (mouseenter)="logoHover=true" (mouseleave)="logoHover=false" (click)="_auth.logout()">
     <div class="avatar-layer" [ngClass]="{'active': avatar.loading || loading.avatar}"><i class="fa fa-clock-o animated infinite flash " aria-hidden="true"></i></div>
     <div class="avatar-layer" [ngClass]="{'active': logoHover===true}"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-    <img *ngIf="avatar.image && avatar.image.length > 0" [src]="avatar.image" [alt]="_auth.user.displayName">
+    <img *ngIf="avatar.image && avatar.image.length > 0" [src]="getAvatarImage()" [alt]="_auth.user.displayName">
   </div>
   <div class="logo animated fadeInUp">
     <a routerLink="/me">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from '../services/auth/';
 import { DataService } from '../services/data';
+import { LsService } from '../services/ls';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private _auth: AuthService,
-    private _ds: DataService
+    private _ds: DataService,
+    private _ls: LsService,
+    private _sanitize: DomSanitizer
   ) { }
 
   isLoggedIn(): boolean { return this._auth.isLoggedIn(); }
@@ -34,6 +38,11 @@ export class HeaderComponent implements OnInit {
     this._ds.avatar.subscribe(avatar => {
       this.avatar = avatar;
     });
+  }
+
+  getAvatarImage() {
+    if (this.avatar['base64']) { return this._sanitize.bypassSecurityTrustUrl(this.avatar['image']); }
+    return this.avatar['image'];
   }
 
 }

@@ -11,7 +11,8 @@ import { AuthService } from './services/auth/';
 import { ApiService } from './services/api/';
 import { DataService } from './services/data/';
 import { AccountService } from './services/account/';
-import { LsService } from './services/ls/'
+import { LsService } from './services/ls/';
+import { UtilsService } from './services/utils/';
 // Models
 import { Book } from './models/book';
 import { BookList } from './models/bookList';
@@ -60,6 +61,7 @@ const firebaseAuthConfig = {
     DataService,
     AccountService,
     LsService,
+    UtilsService,
     {
       provide: Book,
       useFactory: () => {
