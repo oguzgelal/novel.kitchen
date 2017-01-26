@@ -35,8 +35,9 @@
 <!-- Header -->
 <div class="header">
   <div *ngIf="_auth.isLoggedIn()" class="animated slideInDown avatar clickable" (mouseenter)="logoHover=true" (mouseleave)="logoHover=false" (click)="_auth.logout()">
-    <div class="logout-layer" [ngClass]="{'active': logoHover===true}"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-    <img [src]="_auth.user.photoURL" [alt]="_auth.user.displayName">
+    <div class="avatar-layer" [ngClass]="{'active': avatar.loading || loading.avatar}"><i class="fa fa-clock-o animated infinite flash " aria-hidden="true"></i></div>
+    <div class="avatar-layer" [ngClass]="{'active': logoHover===true}"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
+    <img [src]="avatar.image" [alt]="_auth.user.displayName">
   </div>
   <div class="logo animated fadeInUp">
     <a routerLink="/me">
@@ -52,7 +53,7 @@
 </div>
 
 <!-- Loading -->
-<div class="loading-container animated fadeIn" *ngIf="loading.on">
+<div class="loading-container animated fadeIn" *ngIf="loading.overlay">
   <div class="loading animated flipInX">
     {{ loading.message || 'loading...' }}
   </div>

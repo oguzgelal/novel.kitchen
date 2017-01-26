@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit {
     self._sub = self.route.data.subscribe(data => {
       self.ds.routerData.next(data);
     });
-    this.ds.loading.next({ on: true });
+    this.ds.loading.next({ overlay: true });
     self._data = this.account.get().subscribe(data => {
       this.settings['username'] = data.username;
       this.settings['bio'] = data.bio;

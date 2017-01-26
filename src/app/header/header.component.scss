@@ -82,12 +82,12 @@
     height: auto;
   }
 }
-.logout-layer {
+.avatar-layer {
   display: none;
   width: 100%;
   height: 100%;
   color: white;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0,0,0,.5);
   position: absolute;
   border-radius: 50%;
   i {
@@ -95,9 +95,14 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     margin-top: 50%;
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    -ms-animation-duration: 2s;
   }
 }
-.logout-layer.active { display: block; }
+.avatar-layer.active { display: block; }
 
 .clickable:hover { cursor: pointer !important; }
 .button:hover {

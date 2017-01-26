@@ -19,27 +19,9 @@ export class AuthService {
     //private _account: AccountService,
     private _ls: LsService
   ) {
-
     let self = this;
     self.fetchLs();
-    if (!self.auth || !self.user) {
-      console.log('Session not found in local storage.');
-      self.refresh();
-    }
-    else {
-      try {
-        let tokenExpire = self.auth.auth.stsTokenManager.expirationTime;
-        let dateNow = Date.now();
-        if (dateNow >= tokenExpire) {
-          console.log('Token has expired.');
-          self.refresh();
-        }
-      }
-      catch (e) {
-        console.log('Token expiration cannot be checked.');
-        self.refresh();
-      }
-    }
+    self.refresh();
   }
 
   public clear() {
@@ -76,8 +58,10 @@ export class AuthService {
       console.log(self.auth);
       if (self.auth && self.auth.facebook) {
         self.user = self.auth.facebook;
-        console.log(self.user);
-        //self._account.sync();
+        self._ds.avatar.next({
+          image: self.user.photoURL,
+          loading: false
+        });
         self.storeLs();
       }
     });
