@@ -31,6 +31,7 @@ export class AuthService {
     this.auth = null;
     this.user = null;
     this._ls.remove('auth_data');
+    this._ls.remove('auth_userimage');
   }
   public storeLs() {
     this._ls.setObject('auth_data', {
