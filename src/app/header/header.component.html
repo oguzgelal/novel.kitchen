@@ -9,13 +9,14 @@
         <ul class="dropdown-menu animated fadeIn" aria-labelledby="mainmenu">
           <!-- public -->
           <li><a routerLink="/">home</a></li>
-          <li><a routerLink="/">about</a></li>
-          <li><a routerLink="/">contact</a></li>
-          <li><a href="https://github.com/oguzgelal/novel.kitchen" target="_new">source code</a></li>
+          <li *ngIf="!_auth.isLoggedIn()"><a routerLink="/">about</a></li>
+          <li *ngIf="!_auth.isLoggedIn()"><a routerLink="/">contact</a></li>
+          <li *ngIf="!_auth.isLoggedIn()"><a href="https://github.com/oguzgelal/novel.kitchen" target="_new">source code</a></li>
           <!-- settings -->
           <li *ngIf="_auth.isLoggedIn()" role="separator" class="divider"></li>
           <li *ngIf="_auth.isLoggedIn()"><a routerLink="/me">dashboard</a></li>
           <li *ngIf="_auth.isLoggedIn()"><a routerLink="/settings">settings</a></li>
+          <li *ngIf="_auth.isLoggedIn()"><a routerLink="/novel/new">new novel</a></li>
           <!-- login / logout -->
           <li role="separator" class="divider"></li>
           <li *ngIf="_auth.isLoggedIn()">
@@ -37,7 +38,7 @@
   <div *ngIf="_auth.isLoggedIn()" class="animated slideInDown avatar clickable" (mouseenter)="logoHover=true" (mouseleave)="logoHover=false" (click)="_auth.logout()">
     <div class="avatar-layer" [ngClass]="{'active': avatar.loading || loading.avatar}"><i class="fa fa-clock-o animated infinite flash " aria-hidden="true"></i></div>
     <div class="avatar-layer" [ngClass]="{'active': logoHover===true}"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-    <img [src]="avatar.image" [alt]="_auth.user.displayName">
+    <img *ngIf="avatar.image && avatar.image.length > 0" [src]="avatar.image" [alt]="_auth.user.displayName">
   </div>
   <div class="logo animated fadeInUp">
     <a routerLink="/me">

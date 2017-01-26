@@ -17,6 +17,7 @@ export class SettingsComponent implements OnInit {
   private settings = {};
   private _sub: any;
   private _data: any;
+  private _loading: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,11 +32,13 @@ export class SettingsComponent implements OnInit {
     self._sub = self.route.data.subscribe(data => {
       self.ds.routerData.next(data);
     });
-    this.ds.loading.next({ overlay: true });
+    self._loading = self.ds.loading.next({
+      overlay: true
+    });
     self._data = this.account.get().subscribe(data => {
       this.settings['username'] = data.username;
       this.settings['bio'] = data.bio;
-      this.ds.loading.next({ on: false });
+      this.ds.loading.next({ overlay: false });
     });
   }
 
