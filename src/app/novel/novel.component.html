@@ -20,25 +20,19 @@
       <div class="form-group mtop">
         <label for="bookTitle">Author</label>
         <div>
-          <label>
-            <input name="authorOptions" type="radio"> Use real name (...)
-          </label>
+          <label><input name="authorOptions" type="radio" value="{{ getUserRealName() }}" [(ngModel)]="book.author" (ngModelChange)="authorModelChange({verified:true, authorType:'real-name'})"> Use real name: <b>{{ getUserRealName() }}</b></label>
         </div>
         <div>
-          <label>
-            <input name="authorOptions" type="radio"> Use account nickname (...)
-          </label>
+          <label><input name="authorOptions" type="radio" value="{{ getAccountUsername() }}" [(ngModel)]="book.author" (ngModelChange)="authorModelChange({verified: true, authorType:'account-username'})"> Use account nickname: <b>{{ getAccountUsername() }}</b></label>
         </div>
         <div>
           <label class="author-label">
-            <input name="authorOptions" type="radio" class="author-rb">
-            <input type="text" class="form-control author-txt" placeholder="Type custom for this novel">
+            <input name="authorOptions" id="customTyped" type="radio" class="author-rb" value="{{ u.name }}" [(ngModel)]="book.author" (ngModelChange)="authorModelChange({authorType:'custom-username'})">
+            <input type="text" class="form-control author-txt" placeholder="Type custom for this novel" name="customTypedUsername" [(ngModel)]="u.name" (ngModelChange)="book.author=u.name; authorModelChange({authorType:'custom-username'})">
           </label>
         </div>
         <div>
-          <label>
-            <input name="authorOptions" type="radio"> Completely anonymous
-          </label>
+          <label><input name="authorOptions" type="radio" value="-" [(ngModel)]="book.author" (ngModelChange)="authorModelChange({anon: true, authorType:'anonymous'})"> Completely anonymous</label>
         </div>
       </div>
       <!-- description -->

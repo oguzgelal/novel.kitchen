@@ -1,4 +1,11 @@
 <div class="book">
   <div class="title" [style.background]="book.color" [style.font-size.px]="calculateFontSize()">{{ book.title }}</div>
-  <div class="author">{{ book.author }}</div>
+  <div class="author">
+    <div *ngIf="!book.anon">
+      <i *ngIf="book.verified && book.author && book.author.length > 0" class="fa fa-check-circle verified" aria-hidden="true"></i> {{ book.author }}
+    </div>
+    <div *ngIf="book.anon">
+      <i class="fa fa-user-secret anon" aria-hidden="true"></i>
+    </div>
+  </div>
 </div>
