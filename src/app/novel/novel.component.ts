@@ -4,6 +4,7 @@ import { Book } from '../models/book';
 import { DataService } from '../services/data';
 import { AuthService } from '../services/auth';
 import { AccountService } from '../services/account';
+import { ColorCodes } from '../enum/colorCodes';
 
 @Component({
   selector: 'app-novel',
@@ -34,7 +35,9 @@ export class NovelComponent implements OnInit, OnDestroy {
       if (data['action']) { this._action = data['action']; }
       this.prepareObject();
     });
+    this._ds.loading.next({ overlay: true });
     this._accountSub = this._account.get().subscribe(data => {
+      this._ds.loading.next({ overlay: false });
       this.account = data;
     });
   }
@@ -48,7 +51,25 @@ export class NovelComponent implements OnInit, OnDestroy {
     return this.account['username'];
   }
 
-  authorModelChange(changelog){
+  isColorActive(color) {
+    if (!this.book.color && ColorCodes['default'] == color) { return true; }
+    else { return this.book.color == color; }
+  }
+
+  getColorCodes() {
+    let colors = [];
+    let keys = Object.keys(ColorCodes);
+    keys.map(function (color) {
+      if (color && color.substring(0, 1) === '#') { colors.push(color); }
+    });
+    return colors;
+  }
+
+  setColorCode(color) {
+    this.book.color = color;
+  }
+
+  authorModelChange(changelog) {
     this.book.authorType = changelog.authorType;
     this.book.verified = !!(changelog && changelog.verified);
     this.book.anon = !!(changelog && changelog.anon);

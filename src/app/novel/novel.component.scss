@@ -28,6 +28,32 @@ form {
   }
 }
 
+.color-codes {
+  line-height: 0px !important;
+  .color-code {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    .icon-cont {
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 100%;
+      i {
+        color: white;
+      }
+    }
+  }
+  .color-code:hover {
+    cursor: pointer;
+  }
+}
+
 input[type="radio"] {
   margin-right: 10px !important;
 }
@@ -38,6 +64,7 @@ input[type="radio"] {
   border: 5px solid black;
   padding: 0;
   padding-bottom: 20px;
+  margin-top: 30px;
 
   .book-preview-title {
     background-color: black;

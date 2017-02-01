@@ -1,15 +1,6 @@
 <div class="row">
 
   <div class="col-sm-offset-3 col-sm-6 col-xs-12">
-    <div class="book-preview-container">
-      <div class="book-preview-title">Preview</div>
-      <div class="book-preview">
-        <book-item [book]="book"></book-item>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-offset-3 col-sm-6 col-xs-12">
     <form>
       <!-- title -->
       <div class="form-group mtop">
@@ -41,7 +32,27 @@
         <textarea name="bookDescription" rows="4" [(ngModel)]="book.description" type="text" class="form-control" id="bookTitle" placeholder="Enter what would normally be on the back side of your novel"></textarea>
       </div>
       <!-- color -->
+      <!-- description -->
+      <div class="form-group mtop">
+        <label for="bookDescription">Label Color</label>
+        <div class="color-codes">
+          <div class="color-code" *ngFor="let color of getColorCodes()" [style.background]="color" (click)="setColorCode(color)">
+            <div class="icon-cont">
+              <i *ngIf="isColorActive(color)" class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
+  </div>
+
+  <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+    <div class="book-preview-container">
+      <div class="book-preview-title">Preview</div>
+      <div class="book-preview">
+        <book-item [book]="book"></book-item>
+      </div>
+    </div>
   </div>
 
   <div class="col-sm-offset-3 col-sm-6 col-xs-12">
